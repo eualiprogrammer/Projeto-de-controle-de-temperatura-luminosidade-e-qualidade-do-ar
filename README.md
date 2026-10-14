@@ -1,0 +1,2 @@
+# Projeto-de-controle-de-temperatura-luminosidade-e-qualidade-do-ar
+Este projeto propõe o desenvolvimento de um sistema automatizado para controlar a temperatura, a luminosidade e a qualidade do ar em salas de aula. Por meio de sensores e dispositivos de acionamento, o sistema será capaz de identificar as condições ambientais e executar ações automáticas para ajustá-las conforme parâmetros previamente definidos
