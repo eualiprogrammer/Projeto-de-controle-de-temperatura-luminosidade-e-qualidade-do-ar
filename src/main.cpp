@@ -9,9 +9,10 @@
 #include <IRutils.h>
 
 const int pinoLDR = 34;
+const int pinoLuz = 26;
 
 #define PINO_DHT 27
-#define TIPO_DHT DHT11
+#define TIPO_DHT DHT11        
 DHT dht(PINO_DHT, TIPO_DHT);
 
 const uint16_t kIrLed = 4;
@@ -84,6 +85,9 @@ void setup() {
   irrecv.enableIRIn();
 
   pinMode(pinoLDR, INPUT);
+  pinMode(pinoLuz, OUTPUT);
+  digitalWrite(pinoLuz, LOW);
+
   dht.begin();
 }
 
@@ -159,12 +163,14 @@ void loop() {
     Serial.print(" | Luminosidade: ");
     Serial.print(porcentagem, 1);
     Serial.print("% (");
-    if (valorLDR < 1500) {
-      Serial.print("Ambiente Escuro");
+    if (valorLDR < 3000) {
+      Serial.print("Ambiente Escuro - Luz ACESA");
+      digitalWrite(pinoLuz, HIGH);
     } else {
-      Serial.print("Ambiente Claro");
+      Serial.print("Ambiente Claro - Luz APAGADA");
+      digitalWrite(pinoLuz, LOW);
     }
-    Serial.print(") | ");
+    Serial.print(") | ");0
 
     if (isnan(umidade) || isnan(temperatura)) {
       Serial.println("DHT11: Erro de leitura!");
